@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "com.sajkorala.webs"
+        version     = "1.2.0"
+        versionCode = "10" > <!-- versionCode is optional and Android only -->
+       
+        <name>Webs</name>
+        <description>Mass Weblinks</description>
+        <author href="http://www.sajkorala.in" email="sajkorala@gmail.com">
+        sajkorala.in
+        </author>
+
+        <!-- App requested permission -->
+        <preference name="permissions" value="none"/>
+		<preference name="orientation" value="portrait" />
+        <preference name="fullscreen" value="false" />
+
+        <!-- ANDROID * ANDROID * ANDROID -->
+        <platform name="android" ></platform>
+
+        <!-- PLUGINS * PLUGINS * PLUGINS -->
+        <plugin name="cordova-plugin-device"         source="npm" spec="1.0.1" />
+        <plugin name="cordova-plugin-whitelist"      source="npm" spec="1.0.0" />
+	    <plugin name="cordova-plugin-vibration"      source="npm" spec="1.0.0" />
+		
+        <content src="index.html" />
+		<icon src="icon.png"/>
+		
+		
+        <!-- WHITELIST * WHITELIST * WHITELIST -->
+        <!-- https://github.com/jessemonroy650/top-phonegap-mistakes/blob/master/the-whitelist-system.md -->
+        <allow-navigation href="http://cordova.apache.org/" />
+        <allow-navigation href="https://slack.cordova.io" />
+        <allow-navigation href="http://www.google-analytics.com/" />
+        <allow-navigation href="https://*.imgur.com/" />
+        <allow-navigation href="https://*.twitter.com/" />
+        <allow-navigation href="https://*.twimg.com/" />
+        <allow-navigation href="http://cordovablogs.discus.com/" />
+        <!-- <allow-intent href="*" /> -->
+        <access origin="*" /> <!-- Required for iOS9 -->
+    </widget>

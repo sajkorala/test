@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type='text/javascript'
+  src='http://code.jquery.com/jquery-1.8.3.js'></script>
+<script type='text/javascript'
+  src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+<link rel="stylesheet" type="text/css"
+  href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css">
+  
+   <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+     <script type="text/javascript" charset="utf-8" src="phonegap-1.0.0.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+    // Wait for device API libraries to load
+    //
+	
+	//onDeviceReady();
+    document.addEventListener("deviceready", onDeviceReady, false);
+	document.addEventListener("backbutton", onBackKeyDown, false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        
+	
+
+	
+	 setTimeout(function(){ 
+	 document.getElementById("saj1010").style.display = "block";
+	document.getElementById("saj1011").style.display = "none";
+	navigator.vibrate(1000);
+	 }, 10);
+	
+	// var element = document.getElementById('deviceProperties');
+       // element.innerHTML = device.uuid;
+   var element = document.getElementById('deviceProperties');
+        element.innerHTML = localStorage.getItem("devicename");
+	
+    }
+	
+	
+
+function onBackKeyDown() {
+    // Handle the back button
+	
+	 var txt;
+  var r = confirm("Press OK to Exit.");
+  if (r == true) {
+    window.location.href="index.html";
+  } else {
+    
+  }
+  
+    
+} 
+	
+	
+
+    </script>
+</head><!--   w  w  w  .ja va 2s  .c  o  m-->
+
+<body  >
+<div id ="saj1011" style="background-image: url('splash.png'); height: 100%;background-position: center; background-repeat: no-repeat;background-size: cover;"></div>
+  <div id ="saj1010" data-role="page" STYLE="display:none;">
+    <div data-role="header" >
+      <h2 style="text-align:left;">Sajkorala Webs</h2>
+    </div>
+	
+    <!-- /header -->
+    <div data-role="content">
+	<label> Name of the Link</label>
+	<input data-role="text" id ="name"></input>
+	<label>URL links of Website</label>
+	<input data-role="text" id ="links"></input>
+	<div style="height:20px;"></div>
+	<button data-role="button" onclick="savelink();">Add Links</button>
+	<button data-role="button" onclick="showitems();">show Links</button>
+	<button data-role="button" onclick="remove();">Remove Links</button>
+	<script>
+	showitems();
+	function savelink(){
+
+	var inputname = document.getElementById("name");
+	var inputlink = document.getElementById("links");
+     localStorage.setItem(inputname.value, inputlink.value);
+	
+showitems();
+	}
+	
+	function remove(){
+	var inputname = document.getElementById("name");
+	localStorage.removeItem(inputname.value);
+	}
+	
+	function showitems(){
+	//var storedValue = localStorage.getItem("sajid");
+	
+	//document.getElementById("linkshow").innerHTML = storedValue;
+	//document.getElementById("linkshow").href = localStorage.length;
+	
+	
+	// iterate localStorage
+for (var i = 0; i < localStorage.length; i++) {
+
+  // set iteration key name
+  var key = localStorage.key(i);
+
+  // use key name to retrieve the corresponding value
+  var value = localStorage.getItem(key);
+
+  // console.log the iteration key and value
+ // console.log('Key: ' + key + ', Value: ' + value);  
+ // document.write('Key: ' + key + ', Value: ' + value);
+document.getElementById("linkshow").innerHTML +=  "<li><a href=" + value + " >" + key + "</a></li>"
+
+}
+
+}
+
+	
+	</script>
+	
+	<div style="height:50px;"></div>
+ 
+ <ul data-role="listview" id="linkshow" data-filter="true" data-filter-placeholder="Search fruits..." data-inset="true">
+   
+    
+</ul>
+<div style="height:100px;"></div>
+  
+    </div>
+    <!-- /content -->
+    <div data-role="footer" data-position="fixed">
+   
+	  <div data-role="navbar" >
+    <ul>
+      <li ><a href="#anylink"  onclick="window.location.href='index.html';" data-icon="home">Home</a></li>
+	  <li><a href="#" onclick="addwebs();" data-icon="video">Add Online</a></li>
+   
+	  <li><a href="#anylink" onclick="window.location.href='addwebs.html';" data-icon="plus">Add Local</a></li>
+    </ul>
+  </div>
+    </div>
+  </div>
+  <!-- /page -->
+</body>
+</html>
